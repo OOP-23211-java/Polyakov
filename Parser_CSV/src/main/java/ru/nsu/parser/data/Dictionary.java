@@ -10,7 +10,7 @@ public class Dictionary {
     private Map<String, Integer> map = new LinkedHashMap<>();
     private long totalWords = 0;
 
-    public Dictionary(MyFileReader inputFile, String outputFilename) {
+    public Dictionary(CustomFileReader inputFile, String outputFilename) {
         this.outputFile = outputFilename;
         fromFile(inputFile.getFileReader());
     }

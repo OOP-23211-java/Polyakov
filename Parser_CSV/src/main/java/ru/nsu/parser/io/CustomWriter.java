@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.List;
 import java.util.ArrayList;
 
-public class WriterCSV {
+public class CustomWriter {
 
     // Метод для записи словаря в CSV файл
     public static void writeCSV(Dictionary dict) {

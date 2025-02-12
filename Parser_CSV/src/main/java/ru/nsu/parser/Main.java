@@ -11,7 +11,7 @@ public class Main {
     private static final int REQUIRED_ARGUMENTS = 2;
 
     public static void main(String[] args) {
-        Locale.setDefault(new Locale("ru"));
+        Locale.forLanguageTag("ru");
         try {
             if (args.length != REQUIRED_ARGUMENTS) {
                 throw new InvalidCountArgsException("Неверное количество аргументов: " + args.length);
@@ -19,9 +19,9 @@ public class Main {
             String inputFile = args[0];
             String outputFile = args[1];
 
-            MyFileReader inputReader = new MyFileReader(inputFile);
+            CustomFileReader inputReader = new CustomFileReader(inputFile);
             Dictionary dictionary = new Dictionary(inputReader, outputFile);
-            WriterCSV.writeCSV(dictionary);
+            CustomWriter.writeCSV(dictionary);
 
             System.out.println("Программа выполнена успешно!");
         } catch (InvalidCountArgsException e) {
