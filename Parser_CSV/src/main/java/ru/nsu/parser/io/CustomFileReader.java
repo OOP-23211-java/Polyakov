@@ -1,12 +1,8 @@
 package ru.nsu.parser.io;
 
-import ru.nsu.parser.exceptions.OpenFileException;
+import java.io.*;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-
-public class CustomFileReader {
+public class CustomFileReader implements Closeable {
     private final String filename;
     private BufferedReader fileReader;
 
@@ -14,21 +10,22 @@ public class CustomFileReader {
         return fileReader;
     }
 
-    public CustomFileReader(String filename) throws OpenFileException {
+    public CustomFileReader(String filename) throws FileNotFoundException {
         this.filename = filename;
         try {
-            fileReader = new BufferedReader(new java.io.FileReader(filename));
+            fileReader = new BufferedReader(new FileReader(filename));
         } catch (FileNotFoundException e) {
-            throw new OpenFileException("Не удалось открыть файл: " + filename, filename);
+            throw new FileNotFoundException("File not found: " + filename);
         }
     }
 
+    @Override
     public void close() {
         if (fileReader != null) {
             try {
                 fileReader.close();
             } catch (IOException e) {
-                System.err.println("Ошибка при закрытии файла: " + filename);
+                System.err.println("Error when closing a file: " + filename);
             }
         }
     }

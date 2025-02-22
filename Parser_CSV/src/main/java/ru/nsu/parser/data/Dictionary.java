@@ -13,11 +13,12 @@ public class Dictionary {
     public Dictionary(CustomFileReader inputFile, String outputFilename) {
         this.outputFile = outputFilename;
         fromFile(inputFile.getFileReader());
+        counter();
     }
 
     // Сортировка словаря по убыванию частоты
-    public void sortDictionary() {
-        System.out.println("Начало сортировки словаря");
+    private void sortDictionary() {
+        System.out.println("Start sorting the dictionary");
         map = map.entrySet().stream()
                 .sorted(Map.Entry.<String, Integer>comparingByValue().reversed())
                 .collect(Collectors.toMap(
@@ -26,7 +27,7 @@ public class Dictionary {
                         (e1, e2) -> e1,
                         LinkedHashMap::new // Сохраняем порядок вставки
                 ));
-        System.out.println("Окончание сортировки словаря");
+        System.out.println("End of dictionary sorting");
     }
 
     // Обработка одного слова
@@ -38,7 +39,7 @@ public class Dictionary {
 
     // Чтение данных из файла
     public void fromFile(BufferedReader file) {
-        System.out.println("Начат процесс заполнения словаря");
+        System.out.println("The process of completing the dictionary has begun");
 
         try {
             String inputStr;
@@ -49,11 +50,17 @@ public class Dictionary {
                 }
             }
         } catch (IOException e) {
-            System.err.println("Ошибка чтения файла: " + e.getMessage());
+            System.err.println("File read error: " + e.getMessage());
         }
 
-        System.out.println("Словарь создан и заполнен");
+        System.out.println("The dictionary has been created and populated");
         sortDictionary(); // Сортировка после завершения чтения файла
+    }
+
+    private void counter() {
+        for (Map.Entry<String, Integer> entry : getMap().entrySet()) {
+            incrementTotalWords(entry.getValue());
+        }
     }
 
     public Map<String, Integer> getMap() {

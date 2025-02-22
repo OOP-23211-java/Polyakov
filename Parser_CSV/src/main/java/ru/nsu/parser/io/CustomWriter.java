@@ -9,32 +9,24 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class CustomWriter {
+    static final int KPercentages = 100;
 
     // Метод для записи словаря в CSV файл
     public static void writeCSV(Dictionary dict) {
         try (BufferedWriter outputFile = new BufferedWriter(new FileWriter(dict.getOutputFile()))) {
-            System.out.println("Запись словаря в CSV файл");
-            outputFile.write("Слово,Количество,Частота(%)\n");
+            System.out.println("Writing dictionary to CSV file");
+            outputFile.write("Word,Number,Frequency(%)\n");
 
-            counter(dict);
             record(outputFile, dict);
 
-            System.out.println("Окончание записи словаря в CSV файл");
+            System.out.println("End of dictionary writing to CSV file");
         } catch (IOException e) {
-            System.err.println("Ошибка записи в файл: " + e.getMessage());
-        }
-    }
-
-    // Подсчёт общего числа слов в словаре
-    private static void counter(Dictionary dict) {
-        for (Map.Entry<String, Integer> entry : dict.getMap().entrySet()) {
-            dict.incrementTotalWords(entry.getValue());
+            System.err.println("Error writing to a file: " + e.getMessage());
         }
     }
 
     // Запись словаря в CSV файл
     private static void record(BufferedWriter outputFile, Dictionary dict) throws IOException {
-        final int KPercentages = 100;
         List<Map.Entry<String, Integer>> sortedList = new ArrayList<>(dict.getMap().entrySet());
         sortedList.sort((a, b) -> Integer.compare(b.getValue(), a.getValue()));
 
