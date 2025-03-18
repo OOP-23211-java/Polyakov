@@ -1,0 +1,33 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group = 'ru.nsu.parser'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+application {
+
+    mainClassName = 'ru.nsu.parser.Main'  // Замените на ваш главный класс
+}
+
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'ru.nsu.parser.Main'  // Укажите главный класс здесь
+        )
+    }
+}
