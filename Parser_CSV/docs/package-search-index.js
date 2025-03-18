@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"ru.nsu.parser"},{"l":"ru.nsu.parser.data"},{"l":"ru.nsu.parser.io"}];updateSearchResults();

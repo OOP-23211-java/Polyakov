@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"ru.nsu.parser.io","l":"CustomFileReader"},{"p":"ru.nsu.parser.io","l":"CustomWriter"},{"p":"ru.nsu.parser.data","l":"Dictionary"},{"p":"ru.nsu.parser.io","l":"ICustomFileReader"},{"p":"ru.nsu.parser.data","l":"IDictionary"},{"p":"ru.nsu.parser","l":"Main"}];updateSearchResults();
